@@ -25,16 +25,28 @@ const run = async () => {
   const vehicles = data.data.searchVehicleAds.vehicleAds;
 
   vehicles.forEach((vehicle) => {
+    console.log("$" + vehicle.price.dealer);
     console.log(
       vehicle.vehicleDetails.modelDetails.modelYear +
         " " +
         vehicle.vehicleDetails.modelDetails.model
     );
-    console.log(vehicle.vehicleDetails.vin);
-    console.log("$" + vehicle.price.dealer);
-    console.log(vehicle.partnerLocation.name);
+    console.log(
+      `[${vehicle.vehicleDetails.pilotPackage ? "x" : " "}] Pilot [${
+        vehicle.vehicleDetails.plusPackage ? "x" : " "
+      }] Plus`
+    );
+    console.log(vehicle.vehicleDetails.motorInfo.labels[0].label);
     console.log(
       vehicle.mileageInfo.distance + " " + vehicle.mileageInfo.metric
+    );
+
+    console.log(vehicle.partnerLocation.name);
+    console.log(vehicle.vehicleDetails.vin);
+
+    console.log(
+      "https://www.polestar.com/us/preowned-cars/product/polestar-2/" +
+        vehicle.id
     );
     console.log();
   });
